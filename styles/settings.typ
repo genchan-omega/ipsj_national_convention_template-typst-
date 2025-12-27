@@ -17,31 +17,16 @@
   )
   // 最上階層の設定
   show heading.where(level: 1): it => {
-    return [
-      #text(size: 13pt, font: "Hiragino Kaku Gothic ProN")[
-        #v(1em)
-        #it
-        #v(1em)
-      ]
-    ]
-  }
-  // headingの置き換え
-  show heading: it => {
-    it
-    // 章が変わるときはナンバリングをリセット
-    if it.level == 1 {
-      counter(figure.where(kind: image)).update(0)
-      counter(figure.where(kind: table)).update(0)
-      counter(math.equation).update(0)
-    }
+    let cvs = 5.25mm
+    block(
+      height: 1.3 * cvs,
+      fill: none,
+      align(horizon, text(size: 13pt, font: "Hiragino Kaku Gothic ProN", it)),
+    )
   }
 
   // 表のcaptionは上に
   show figure.where(kind: table): set figure.caption(position: top)
-  // captionが{章番号.章内の図表番号}となるように設定
-  set figure(numbering: (..args) => {
-    return [#{ counter(heading).get().at(0) }.#args.at(0)]
-  })
 
   set table(
     stroke: (x, y) => if y == 0 {

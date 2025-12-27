@@ -32,24 +32,28 @@
     top + center,
     scope: "parent",
     float: true,
-    columns(
-      authors.len(),
+    grid(
+      columns: for _ in range(authors.len()) { (1fr,) },
       gutter: 5pt,
-    )[
-      #for (i, author) in authors.enumerate() {
-        text(size: author-size)[
-          #author.name
-        ]
-        footnote[
-          #text(size: en-author-size)[#author.en-name,]
-          #text(size: en-organization-size)[#author.en-organization]
-          #let nlabel = "title" + str(i)
-          #label(nlabel)
-        ]
-        text(size: organization-size)[\ #author.organization \ ]
-        colbreak()
-      }
-    ],
+      ..for (i, author) in authors.enumerate() {
+        (
+          text(size: author-size)[
+            #author.name
+            #footnote[
+              #text(size: en-author-size)[#author.en-name,]
+              #text(size: en-organization-size)[#author.en-organization]
+              #let nlabel = "title" + str(i)
+              #label(nlabel)
+            ],
+          ],
+        )
+      },
+      ..for (i, author) in authors.enumerate() {
+        (
+          text(size: organization-size)[#author.organization],
+        )
+      },
+    ),
   )
   #place()[
     #counter(footnote).update(0)

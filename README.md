@@ -10,4 +10,5 @@
 ## License
 - Code: [MIT](LICENSE)
 - Documents & Media: [CC BY 4.0](LICENSE)
+
 Copyright (c) 2025 genchan_omega

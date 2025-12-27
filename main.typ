@@ -36,10 +36,30 @@
 #lorem(150)
 
 = モデル
-#lorem(150)
+#lorem(75)
+
+#figure(
+  kind: image,
+  image("images/ipsj.png", width: 100%),
+  caption: "情報処理学会",
+) <ipsj_1>
+
+#lorem(75)
 
 = 計算機実験
-#lorem(150)
+#lorem(75)
+
+#figure(
+  grid(
+    columns: 2,
+    gutter: 2mm,
+    image("images/no_1.png", width: 100%),
+    image("images/no_2.png", width: 100%),
+  ),
+  caption: "並列した図",
+) <ipsj_2>
+
+#lorem(75)
 
 = おわりに
 #lorem(150)
